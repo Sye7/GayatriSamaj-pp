@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".startActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/lll"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logoapp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:transitionName="logotransition"
+            android:background="@drawable/logo"
+
+
+            />
+    <TextView
+        android:id="@+id/appname"
+        android:layout_width="wrap_content"
+        android:text="Gayatri Pariwar"
+        android:layout_marginTop="5dp"
+        android:textColor="#ff8f56"
+        android:layout_height="30dp"
+        android:paddingLeft="13dp"
+
+
+
+        android:fontFamily="@font/tahomabo"
+        android:textSize="20sp"
+        android:transitionName="appnametransition" />
+    </LinearLayout>
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    android:background="@drawable/startscreenbg"
+    android:layout_marginTop="30dp"
+    android:layout_above="@id/ll"
+    android:layout_marginBottom="-80dp"
+    />
+
+    <TextView
+        android:id="@+id/quote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Self-observation is the first
+step of inner unfolding."
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lll"
+        android:layout_marginTop="60dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/tahomabo"
+        android:textStyle="italic"
+        android:maxWidth="250dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tahomabo"
+        android:text="-Amit Ray"
+        android:layout_below="@id/quote"
+        android:gravity="right"
+        android:textStyle="italic"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="80dp"
+
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/ll"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_gravity="center"
+        android:layout_above="@id/login"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/signupbutton"
+        android:textSize="20sp"
+        android:fontFamily="serif"
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:layout_height="50dp" />
+    <Button
+        android:id="@+id/login"
+        android:layout_gravity="center"
+
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/loginbuttonone"
+        android:layout_marginTop="15dp"
+        android:fontFamily="serif"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    </LinearLayout>
+</RelativeLayout>

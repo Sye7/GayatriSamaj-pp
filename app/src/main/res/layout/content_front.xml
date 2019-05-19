@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".FrontActivity"
+    tools:showIn="@layout/app_bar_front">
+
+    <Button
+        android:id="@+id/japButton1"
+        android:layout_width="250dp"
+        android:text="JAP"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:layout_height="70dp"
+        />
+    <Button
+        android:id="@+id/meditationButton1"
+        android:layout_width="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="MEDITATION"
+        android:layout_height="70dp"
+        />
+    <Button
+        android:id="@+id/swadhyayButton1"
+        android:layout_width="250dp"
+        android:text="SWADHYAY"
+        android:layout_gravity="center"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/YagyaButton1"
+        android:layout_width="250dp"
+        android:text="YAGYA"
+        android:layout_gravity="center"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        />
+
+
+</LinearLayout>

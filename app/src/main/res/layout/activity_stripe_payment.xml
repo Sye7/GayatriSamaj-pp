@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:stripe="http://schemas.android.com/apk/res-auto"
+    tools:context=".StripePayment">
+    <com.stripe.android.view.CardMultilineWidget
+        android:id="@+id/card_multiline_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:shouldShowPostalCode="false"
+        stripe:cardTint="@android:color/holo_purple"
+        stripe:cardTextErrorColor="@android:color/holo_orange_dark"
+
+        />
+
+
+    <Button
+        android:id="@+id/save"
+        android:text="save"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        />
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="50dp"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"
+        android:layout_height="50dp"
+        />
+</LinearLayout>

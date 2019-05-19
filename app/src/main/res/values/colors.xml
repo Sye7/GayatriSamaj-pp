@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E65100</color>
+    <color name="colorPrimaryDark">#FF4E50</color>
+    <color name="colorAccent">#0ED2F7</color>
+    <color name="white">#ffffff</color>
+    <color name="nliveo_blue_colorPrimaryDark">#1976D2</color>
+    <color name="blueColor">#4422EE</color>
+    <color name="regColor">#FEFFDB</color>
+    <color name="startblue">#4BB6EF</color>
+    <color name="endblue">#4BB6EF</color>
+
+
+</resources>
