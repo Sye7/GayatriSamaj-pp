@@ -7,6 +7,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -42,7 +44,6 @@ import java.util.Arrays;
 public class ProfileFill extends AppCompatActivity {
 
     final int RC_PHOTO_PICKER = 1;
-    static   Uri downloadUri;
     private DatabaseReference mMessageDatabaseReferenceUser;
 
     private StorageReference mChatPhotoStorageRef;
@@ -51,21 +52,28 @@ public class ProfileFill extends AppCompatActivity {
     private String mUsername;
     private FirebaseAuth authFirebase;
 
-    Uri selectedImageUri;
     String name = "mhsadgh";
+    String lastName = "mhsadgh";
+    String email = "mhsadgh";
     String country ="sahdg";
     String mobileNo ="sahdg";
 
     EditText editTextName;
+    EditText editTextLastName;
+    EditText editEmail;
+
     EditText editMobileNo;
     EditText editTextCountry;
-    ImageView dp;
-    ProgressBar progressBar;
 
 
 
     Boolean flag;
     DatabaseReference reference;
+    TextInputLayout fn;
+    TextInputLayout ln;
+    TextInputLayout pn;
+    TextInputLayout ct;
+    TextInputLayout em;
 
     public void submit(final View view){
 
@@ -73,69 +81,43 @@ public class ProfileFill extends AppCompatActivity {
 
         // check if already exists
 
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
 
 
-        if(mobileNo == null)
-        {
-            Snackbar.make(view,"Fill Mobile Number first",Snackbar.LENGTH_SHORT).show();
-            return;
-        }
-
-
-        if(selectedImageUri == null){
-
-            Snackbar.make(view,"Please select DP first",Snackbar.LENGTH_LONG).show();
-            return;
-        }
-
         Snackbar.make(view,"Please wait while data is uploading",Snackbar.LENGTH_LONG).show();
 
+
         name = editTextName.getText().toString();
+        lastName = editTextLastName.getText().toString();
         country = editTextCountry.getText().toString();
         mobileNo = editMobileNo.getText().toString();
+        email = editEmail.getText().toString();
+
+
+        if(name.isEmpty())
+            fn.setError("Invalid First Name");
+        if(lastName.isEmpty())
+            fn.setError("Invalid Last Name");
+        if(email.isEmpty())
+            fn.setError("Invalid Email");
+        if(country.isEmpty())
+            fn.setError("Invalid Country Name");
+
+        name = name + " "+lastName;
+
 
         String uid = FirebaseAuth.getInstance().getUid();
 
 
-        // upload
+        Users profileInfo =
+                new Users(uid, "urlImage", name, country, mobileNo,email );
+        mMessageDatabaseReferenceUser.push().setValue(profileInfo);
+        Snackbar.make(view,"Done :)",Snackbar.LENGTH_SHORT).show();
 
+        Intent intent = new Intent(getApplicationContext(),ScrollingActivity.class);
+        startActivity(intent);
+        finish();
 
-        //Get a reference to store file at image_photos/<FileName>
-        final StorageReference photoRef = mChatPhotoStorageRef.child(selectedImageUri.getLastPathSegment());
-
-
-        //Upload file to firebase storage
-        photoRef.putFile(selectedImageUri).addOnSuccessListener(this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-
-                photoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-
-                        // got image url
-                        downloadUri = uri;
-
-                        Users profileInfo =
-                                new Users(uid, downloadUri.toString(), name, country, mobileNo );
-                        mMessageDatabaseReferenceUser.push().setValue(profileInfo);
-                        Snackbar.make(view,"Done :)",Snackbar.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(getApplicationContext(),ScrollingActivity.class);
-                        startActivity(intent);
-                        finish();
-
-                    }
-
-
-                });
-
-
-            }
-        });
 
     }
 
@@ -166,7 +148,11 @@ public class ProfileFill extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+
+        // remove title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        setContentView(R.layout.profile_reg);
 
 
 
@@ -178,42 +164,25 @@ public class ProfileFill extends AppCompatActivity {
         mFirebaseStorage = FirebaseStorage.getInstance();
         mChatPhotoStorageRef = mFirebaseStorage.getReference().child("image_photos");
 
-        dp =  findViewById(R.id.dpP);
         editTextName = (EditText) findViewById(R.id.nameP);
         editTextCountry = (EditText) findViewById(R.id.countryP);
         editMobileNo = findViewById(R.id.mobP);
+        editTextLastName = findViewById(R.id.lastNameP);
+        editEmail = findViewById(R.id.emailP);
+
+        if(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null)
+        editMobileNo.setText(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+
+        fn = findViewById(R.id.fn);
+        ln = findViewById(R.id.ln);
+        pn = findViewById(R.id.pn);
+        ct = findViewById(R.id.ct);
+        em = findViewById(R.id.ea);
 
 
 
 
-
-        dp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                // TODO: Fire an intent to show an image picker
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/jpeg");
-                intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
-                startActivityForResult(Intent.createChooser(intent,"Complete Action Using"),RC_PHOTO_PICKER);
-
-
-            }
-        });
 
     }
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-        if(requestCode == RC_PHOTO_PICKER && resultCode == RESULT_OK){
-
-            selectedImageUri = data.getData();
-
-        }
-
-
-    }
 }

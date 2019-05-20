@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="NoActionBar" parent="Theme.AppCompat.Light">
+    <style name="NoActionBar" parent="Theme.AppCompat.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowContentTransitions">true</item>
@@ -15,7 +15,7 @@
         <item name="android:windowFullscreen">true</item>
         <item name="colorAccent">@color/nliveo_blue_colorPrimaryDark</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@color/signn</item>
     </style>
 
 

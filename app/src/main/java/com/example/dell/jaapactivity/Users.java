@@ -7,6 +7,24 @@ public class Users {
     String username;
     String country;
     String mob;
+    String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Users(String id, String imageURL, String username, String country, String mob, String email) {
+        this.id = id;
+        this.imageURL = imageURL;
+        this.username = username;
+        this.country = country;
+        this.mob = mob;
+        this.email = email;
+    }
 
     public String getMob() {
         return mob;

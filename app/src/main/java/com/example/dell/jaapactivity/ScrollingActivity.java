@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.example.dell.jaapactivity.Tabbed.MainActivity;
 
 
 public class ScrollingActivity extends AppCompatActivity  {
@@ -150,7 +151,6 @@ public class ScrollingActivity extends AppCompatActivity  {
             if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
 
                 //Displaying a toast
-                Toast.makeText(this,"Permission granted now you can record audio ",Toast.LENGTH_LONG).show();
             }else{
                 //Displaying another toast if permission is not granted
                 Toast.makeText(this,"Oops you just denied the permission",Toast.LENGTH_LONG).show();
@@ -165,7 +165,7 @@ public class ScrollingActivity extends AppCompatActivity  {
 
         if (id == R.id.all_reports) {
             // Handle the camera action
-            Intent reportsIntet = new Intent(getApplicationContext(), ProfileActivity.class);
+            Intent reportsIntet = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(reportsIntet);
         }
 

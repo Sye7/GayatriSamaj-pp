@@ -29,18 +29,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    ImageView dp;
     TextView name;
     TextView mob;
     TextView country;
-    Button logOut;
-    LinearLayout report;
+    TextView email;
+
 
     String nameT;
     String mobT;
     String countryT;
-    String imageT;
-
+    String emailT;
 
 
     // Bottom nav
@@ -107,12 +105,11 @@ public class ProfileActivity extends AppCompatActivity {
                         nameT = user.getUsername();
                         mobT = user.getMob();
                         countryT = user.getCountry();
-                        imageT = user.getImageURL();
-
+                        emailT = user.getEmail();
                         name.setText(nameT);
                         mob.setText(mobT);
                         country.setText(countryT);
-                        Glide.with(ProfileActivity.this).load(imageT).into(dp);
+                        email.setText(emailT);
 
                     }
 
@@ -130,12 +127,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    public void logOut(View view)
-    {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getApplicationContext(), startActivity.class);
-        startActivity(intent);
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,22 +135,11 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile1);
 
 
-        dp = findViewById(R.id.profileV);
         name = findViewById(R.id.nameV);
         mob = findViewById(R.id.mobV);
         country = findViewById(R.id.countryV);
-        logOut = findViewById(R.id.signOutV);
-        report = findViewById(R.id.sendReportV);
+        email = findViewById(R.id.emailV);
 
-        report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
 
         // Bottom nav

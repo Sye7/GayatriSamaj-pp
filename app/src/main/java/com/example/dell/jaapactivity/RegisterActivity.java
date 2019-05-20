@@ -1,5 +1,6 @@
 package com.example.dell.jaapactivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
@@ -49,6 +51,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     private final int RC_SIGN_IN = 1;
 
+
+    ProgressDialog mProgressDialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                         .build(),
                 RC_SIGN_IN);
 
+
     }
 
 
@@ -75,6 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(requestCode == RC_SIGN_IN && resultCode == RESULT_OK)
         {
+
 
             FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -89,15 +97,17 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                     Toast.makeText(RegisterActivity.this, "Please wait", Toast.LENGTH_SHORT).show();
+                    Log.i("yas", " 2");
+
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Users user = snapshot.getValue(Users.class);
 
-                        Log.i("yas","yas2" + user.id + user.country + firebaseUser.getUid());
 
-                        if (user.id.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
 
-                            Log.i("yas","new" + user.id + user.country + firebaseUser.getUid());
+
+                        if (FirebaseAuth.getInstance().getUid().equals(user.id)) {
+
 
                             // If already present
                             flag = true;
@@ -109,7 +119,6 @@ public class RegisterActivity extends AppCompatActivity {
                     if(flag)                // If already present
                     {
 
-                        Log.i("yas","reg 1");
                         Toast.makeText(RegisterActivity.this, " Please Login", Toast.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(getApplicationContext(), startActivity.class);
@@ -117,11 +126,11 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        Log.i("yas","reg 2");
 
                         Intent intent = new Intent(getApplicationContext(),ProfileFill.class);
                         startActivity(intent);
                     }
+
 
 
                 }
@@ -133,6 +142,8 @@ public class RegisterActivity extends AppCompatActivity {
             });
 
 
+
+
         }
 
 
@@ -141,14 +152,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private boolean checkIfEmailIsVerified() {
-        if (FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
-
-            verified = true;
-        }
-        return verified;
-
-    }
 
 
 

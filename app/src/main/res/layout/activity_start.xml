@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/front"
     android:layout_height="match_parent"
     tools:context=".startActivity">
 
@@ -44,7 +45,6 @@
 <ImageView
     android:layout_width="match_parent"
     android:layout_height="600dp"
-    android:background="@drawable/startscreenbg"
     android:layout_marginTop="30dp"
     android:layout_above="@id/ll"
     android:layout_marginBottom="-80dp"
@@ -58,8 +58,9 @@
 step of inner unfolding."
         android:layout_centerHorizontal="true"
         android:layout_below="@id/lll"
-        android:layout_marginTop="60dp"
-        android:textSize="20sp"
+        android:layout_marginTop="90dp"
+        android:textSize="18sp"
+        android:textColor="#505050"
         android:textAlignment="center"
         android:fontFamily="@font/tahomabo"
         android:textStyle="italic"
@@ -73,8 +74,9 @@ step of inner unfolding."
         android:layout_below="@id/quote"
         android:gravity="right"
         android:textStyle="italic"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:layout_marginTop="10dp"
+        android:textColor="#505050"
         android:layout_alignParentRight="true"
         android:layout_marginRight="80dp"
 

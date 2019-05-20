@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/signn"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Profile"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="30sp"
+            android:fontFamily="@font/tahomabo"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:hint="First Name"
+                android:id="@+id/fn"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:maxLines="1"
+                    android:id="@+id/nameP"
+                    android:layout_height="wrap_content" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:hint="Last Name"
+                android:id="@+id/ln"
+                android:layout_marginTop="20dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/lastNameP"
+                    android:maxLines="1"
+                    android:layout_height="wrap_content" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:hint="Country"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:id="@+id/ct"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/countryP"
+                    android:maxLines="1"
+                    android:layout_height="wrap_content" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:hint="Email Address"
+                android:layout_marginTop="20dp"
+                android:id="@+id/ea"
+                android:layout_width="match_parent"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/emailP"
+                    android:maxLines="1"
+                    android:layout_height="wrap_content" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:hint="Phone Number"
+                android:layout_marginTop="20dp"
+                android:id="@+id/pn"
+                android:layout_width="match_parent"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/mobP"
+                    android:maxLines="1"
+                    android:layout_height="wrap_content" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/submitP"
+                android:layout_gravity="center"
+                android:layout_above="@id/login"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/signupbutton"
+                android:textSize="20sp"
+                android:fontFamily="serif"
+                android:onClick="submit"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:layout_height="50dp" />
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -204,55 +204,6 @@ public class ReportActivity extends AppCompatActivity implements DatePickerDialo
         }
         return super.onOptionsItemSelected(item);
     }
-  /*  public void refreshPieChart(){
-
-        //Pie Chart for displaying data in a date range set by user
-        ReportDataBaseHandler rDb2 = new ReportDataBaseHandler(getParent());
-        ArrayList<PieEntry> rangeDataList = new ArrayList<>();
-        rangeDataList.add(new PieEntry(rDb2.timeBetweenRange(selectedStartDate,selectedEndDate,selectedStartMonth,selectedEndMonth,0),"Japs"));
-        rangeDataList.add(new PieEntry(rDb2.timeBetweenRange(selectedStartDate,selectedEndDate,selectedStartMonth,selectedEndMonth,1),"Meditataion"));
-        rangeDataList.add(new PieEntry(rDb2.timeBetweenRange(selectedStartDate,selectedEndDate,selectedStartMonth,selectedEndMonth,2),"Swadhyay"));
-        rangeDataList.add(new PieEntry(rDb2.timeBetweenRange(selectedStartDate,selectedEndDate,selectedStartMonth,selectedEndMonth,3),"Yagya"));
-        PieDataSet rangeDataSet = new PieDataSet(rangeDataList,"Selected Range View");
-        PieData rangeData = new PieData(rangeDataSet);
-        rangeDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
-        rangeDataSet.setSliceSpace(1f);
-        rangeDataPieChart.setEntryLabelColor(Color.BLACK);
-        rangeDataPieChart.animateXY(2000,2000);
-        rangeDataPieChart.setData(rangeData);
-        rangeData.notifyDataChanged();
-        rangeDataPieChart.invalidate();
-
-
-    }*/
-
-   /* public void  showDialogBox(Activity activity, String title, final CharSequence message) {
-        LayoutInflater li = LayoutInflater.from(activity);
-        View datePickView = li.inflate(R.layout.datedialog, null);
-        startDate =  datePickView.findViewById(R.id.setStartDate);
-        endDate  = datePickView.findViewById(R.id.setEndDate);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-        builder.setView(datePickView);
-
-
-       startDate.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               showDatePicker();
-           }
-       });
-       endDate.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               showDatePicker();
-
-           }
-       });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-
-    }*/
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

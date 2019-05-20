@@ -1,5 +1,6 @@
 package com.example.dell.jaapactivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.dell.jaapactivity.Model.User;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +33,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.Arrays;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity  {
 
     MaterialEditText email,password;
     Button signIn;
@@ -44,6 +46,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private final int RC_SIGN_IN = 1;
     boolean flag = false;
+     int sw =0;
+
+
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -66,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                         Users user = snapshot.getValue(Users.class);
 
 
-                        if (user.id.equals(FirebaseAuth.getInstance().getUid())) {
+                        if (FirebaseAuth.getInstance().getUid().equals(user.id)) {
 
 
                             // If already present
@@ -107,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sw =0;
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
@@ -116,6 +125,8 @@ public class LoginActivity extends AppCompatActivity {
                         ))
                         .build(),
                 RC_SIGN_IN);
+        sw =1;
+
 
 
     }
